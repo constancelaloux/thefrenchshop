@@ -26,9 +26,21 @@
                 <li class="nav-item">
                   <a class="nav-link disabled">Qui sommes nous?</a>
                 </li>
+                {% if app.user %}
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Inscription</a>
+                  <a class="nav-link" href="{{ path('app_account') }}">Mon compte</a>
                 </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ path('app_register') }}">Inscription</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ path('app_login') }}">Connexion</a>
+                </li>
+                {% endif %}
               </ul>
               <form class="d-flex" role="search">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
