@@ -22,8 +22,8 @@ class RegisterType extends AbstractType
                     'label' => 'Votre prénom',
                     'required' => true,
                     'constraints' => [new Assert\Length([
-                        'min' => 3,
-                        'max' => 10,
+                        'min' => 2,
+                        'max' => 30,
                         ])],
                     'attr' => [
                         'placeholder' => 'Merci de saisir votre prénom'
@@ -31,12 +31,22 @@ class RegisterType extends AbstractType
                 ])
             ->add('lastname', TextType::class,[
                     'label' => 'Votre nom',
+                    'required' => true,
+                    'constraints' => [new Assert\Length([
+                        'min' => 2,
+                        'max' => 30,
+                        ])],
                     'attr' => [
                         'placeholder' => 'Merci de saisir votre nom'
                         ]
                 ])
             ->add('email', EmailType::class,[
                     'label' => 'Votre email',
+                    'required' => true,
+                    'constraints' => [new Assert\Length([
+                        'min' => 2,
+                        'max' => 60,
+                        ])],
                     'attr' => [
                         'placeholder' => 'Merci de saisir votre email'
                         ]
@@ -46,8 +56,17 @@ class RegisterType extends AbstractType
                     'invalid_message' => 'le mot de passe et la confirmation doivent étre indentiques',
                     'label' => 'Votre mot de passe',
                     'required' => true,
-                    'first_options' => [ 'label' => 'Mot de passe'],
-                    'second_options' => [ 'label' => 'Confirmez votre mot de passe']
+                    'first_options' => [ 
+                        'label' => 'Mot de passe',        
+                        'attr' => [
+                        'placeholder' => 'Merci de saisir votre mot de passe'
+                        ]
+                    ],
+                    'second_options' => [ 'label' => 'Confirmez votre mot de passe',        
+                        'attr' => [
+                        'placeholder' => 'Merci de confirmer votre mot de passe'
+                        ]
+                    ]
                 ])
             ->add('submit', SubmitType::class,[
                     'label' => "S'inscrire"
