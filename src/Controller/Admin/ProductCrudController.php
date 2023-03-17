@@ -13,28 +13,37 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
 
 class ProductCrudController extends AbstractCrudController
 {
+     public const PRODUCT_BASE_PATH = 'images/';
+    public const PRODUCT_UPLOAD_DIR = 'public/images/';
+    public const UPLOADED_FILE_NAME_PATTERN = '[randomhash].[extension]';
+    
     public static function getEntityFqcn(): string
     {
         return Product::class;
     }
 
-    
+ 
     public function configureFields(string $pageName): iterable
     {
         return [
-            TextField::new('name'),
-            TextField::new('subtitle'),
-            SlugField::new('slug')
-                ->setTargetFieldName('name'),
-            TextareaField::new('Description'),
-            AssociationField::new('category'),
-            ImageField::new('illustration')
-                ->setUploadDir('assets/images/')
-                ->setBasePath('assets/images/')
-                ->setUploadedFileNamePattern('[year]/[month]/[day]/[slug]-[contenthash].[extension]'),
-            MoneyField::new('price')
-                ->setCurrency('EUR'),
-        ];
+                   TextField::new('name'),
+                   TextField::new('subtitle'),
+                   SlugField::new('slug')
+                       ->setTargetFieldName('name'),
+                   TextareaField::new('Description'),
+                   AssociationField::new('category'),
+                   ImageField::new('illustration')
+                       ->setUploadDir(self::PRODUCT_UPLOAD_DIR)
+                       ->setBasePath(self::PRODUCT_BASE_PATH)
+                       ->setUploadedFileNamePattern(self::UPLOADED_FILE_NAME_PATTERN)
+                       ->setRequired(false),
+                   MoneyField::new('price')
+                       ->setCurrency('EUR'),
+                   /*DateTimeField::new('updatedAt')
+                       ->hideOnForm(),
+                   DateTimeField::new('createdAt')
+                       ->hideOnForm(),*/
+               ];
+
     }
-    
 }

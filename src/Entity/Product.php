@@ -67,16 +67,12 @@ class Product
 
     public function getIllustration(): ?string
     {
-        dd($this->illustration);
-        die("ou la!");
         return $this->illustration;
     }
 
     public function setIllustration(string $illustration): self
     {
         $this->illustration = $illustration;
-        dd($this->illustration);
-        die("meurs ici");
 
         return $this;
     }
