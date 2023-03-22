@@ -7,49 +7,113 @@
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
     </head>
-    
-    <header>
-        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-          <div class="container-fluid">
-            <a class="navbar-brand" href="#">The french shop</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-              <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="{{ path('app_products') }}">Nos produits</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Contact</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link disabled">Qui sommes nous?</a>
-                </li>
-                {% if app.user %}
-                <li class="nav-item">
-                  <a class="nav-link" href="{{ path('app_account') }}">Mon compte</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>
-                </li>
-                {% else %}
-                <li class="nav-item">
-                  <a class="nav-link" href="{{ path('app_register') }}">Inscription</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{{ path('app_login') }}">Connexion</a>
-                </li>
-                {% endif %}
-              </ul>
-              <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-              </form>
+
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <div class="collapse navbar-collapse flex-column " id="navbar">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-2">
+                    <a class="navbar-brand" href="#">
+                        The french shop
+                    </a>
+                </div>
+                <div class="col-lg-6">
+                    <!--<div class="collapse navbar-collapse" id="navbarCollapse">-->
+                    <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{{ path('app_products') }}">Nos produits</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="">Qui sommes nous?</a>
+                        </li>
+                        {% if app.user %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('app_account') }}">Mon compte</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('app_register') }}">Inscription</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('app_login') }}">Connexion</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>
+                    <!--</div>-->
             </div>
-          </div>
-        </nav>
-    </header>
+            <div class="row">
+                <!--<div class="collapse navbar-collapse" id="navbarCollapse">-->
+                <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                    <div class="btn-group dropdown"role="group">
+                        <button class="btn btn-secondary dropdown-toggle bg-dark me-3" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Femme
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><button class="dropdown-item" type="button">Action</button></li>
+                            <li><button class="dropdown-item" type="button">Another action</button></li>
+                            <li><button class="dropdown-item" type="button">Something else here</button></li>
+                        </ul>
+                    </div> 
+                    <div class="btn-group dropdown" role="group">
+                        <button class="btn btn-secondary dropdown-toggle dropdown-toggle-split bg-dark me-3" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Homme
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><button class="dropdown-item" type="button">Action</button></li>
+                            <li><button class="dropdown-item" type="button">Another action</button></li>
+                            <li><button class="dropdown-item" type="button">Something else here</button></li>
+                        </ul>
+                    </div> 
+                    <div class="btn-group dropdown" role="group">
+                        <button class="btn btn-secondary dropdown-toggle bg-dark me-3" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Enfants
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><button class="dropdown-item" type="button">Action</button></li>
+                            <li><button class="dropdown-item" type="button">Another action</button></li>
+                            <li><button class="dropdown-item" type="button">Something else here</button></li>
+                        </ul>
+                    </div> 
+                    <div class="btn-group dropdown" role="group">
+                        <button class="btn btn-secondary dropdown-toggle bg-dark me-3" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Maison
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><button class="dropdown-item" type="button">Action</button></li>
+                            <li><button class="dropdown-item" type="button">Another action</button></li>
+                            <li><button class="dropdown-item" type="button">Something else here</button></li>
+                        </ul>
+                    </div> 
+                    <div class="btn-group dropdown" role="group">
+                        <button class="btn btn-secondary dropdown-toggle bg-dark me-3" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Animaux
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><button class="dropdown-item" type="button">Action</button></li>
+                            <li><button class="dropdown-item" type="button">Another action</button></li>
+                            <li><button class="dropdown-item" type="button">Something else here</button></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    
+ 
     {% if block('carousel') is defined%}
     <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-indicators">
