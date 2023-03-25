@@ -7,6 +7,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Product;
+use App\Classe\Search;
+use App\Form\SearchType;
+use Symfony\Component\HttpFoundation\Request;
 
 class ProductController extends AbstractController
 {
@@ -18,7 +21,7 @@ class ProductController extends AbstractController
     }
     
     #[Route('/products', name: 'app_products')]
-    public function index(): Response
+    public function index(Request $request): Response
     {
         $products = $this->entityManager->getRepository(Product::class)->findAll();
 
@@ -27,8 +30,20 @@ class ProductController extends AbstractController
                 'No product found'
             );
         }
+        
+        $search = new Search();
+        $form = $this->createForm(SearchType::class, $search);
+        
+        $form->handleRequest($request);
+        
+        if($form->isSubmitted()&& $form->isValid())
+        {
+            $products = $this->entityManager->getRepository(Product::class)->findWithSearch($search);
+        }
+        
         return $this->render('product/index.html.twig', [
             'products' => $products,
+            'form' => $form->createView()
         ]);
     }
     

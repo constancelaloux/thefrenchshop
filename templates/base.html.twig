@@ -2,185 +2,198 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}The french shop{% endblock %}</title>
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
     </head>
 
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    <div class="collapse navbar-collapse flex-column " id="navbar">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-2">
-                    <a class="navbar-brand" href="#">
-                        The french shop
-                    </a>
-                </div>
-                <div class="col-lg-6">
-                    <!--<div class="collapse navbar-collapse" id="navbarCollapse">-->
-                    <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{{ path('app_products') }}">Nos produits</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Contact</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="">Qui sommes nous?</a>
-                        </li>
-                        {% if app.user %}
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ path('app_account') }}">Mon compte</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>
-                            </li>
-                        {% else %}
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ path('app_register') }}">Inscription</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ path('app_login') }}">Connexion</a>
-                            </li>
-                        {% endif %}
-                    </ul>
-                </div>
-                <div class="col-lg-4">
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form>
-                </div>
-                    <!--</div>-->
-            </div>
-            <div class="row">
-                <!--<div class="collapse navbar-collapse" id="navbarCollapse">-->
-                <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-                    <div class="btn-group dropdown"role="group">
-                        <button class="btn btn-secondary dropdown-toggle bg-dark me-3" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Femme
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><button class="dropdown-item" type="button">Action</button></li>
-                            <li><button class="dropdown-item" type="button">Another action</button></li>
-                            <li><button class="dropdown-item" type="button">Something else here</button></li>
-                        </ul>
-                    </div> 
-                    <div class="btn-group dropdown" role="group">
-                        <button class="btn btn-secondary dropdown-toggle dropdown-toggle-split bg-dark me-3" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Homme
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><button class="dropdown-item" type="button">Action</button></li>
-                            <li><button class="dropdown-item" type="button">Another action</button></li>
-                            <li><button class="dropdown-item" type="button">Something else here</button></li>
-                        </ul>
-                    </div> 
-                    <div class="btn-group dropdown" role="group">
-                        <button class="btn btn-secondary dropdown-toggle bg-dark me-3" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Enfants
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><button class="dropdown-item" type="button">Action</button></li>
-                            <li><button class="dropdown-item" type="button">Another action</button></li>
-                            <li><button class="dropdown-item" type="button">Something else here</button></li>
-                        </ul>
-                    </div> 
-                    <div class="btn-group dropdown" role="group">
-                        <button class="btn btn-secondary dropdown-toggle bg-dark me-3" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Maison
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><button class="dropdown-item" type="button">Action</button></li>
-                            <li><button class="dropdown-item" type="button">Another action</button></li>
-                            <li><button class="dropdown-item" type="button">Something else here</button></li>
-                        </ul>
-                    </div> 
-                    <div class="btn-group dropdown" role="group">
-                        <button class="btn btn-secondary dropdown-toggle bg-dark me-3" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Animaux
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><button class="dropdown-item" type="button">Action</button></li>
-                            <li><button class="dropdown-item" type="button">Another action</button></li>
-                            <li><button class="dropdown-item" type="button">Something else here</button></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</nav>
-    
- 
-    {% if block('carousel') is defined%}
-    <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-indicators">
-        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-      </div>
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
-
-          <div class="container">
-            <div class="carousel-caption text-start">
-              <h1>Example headline.</h1>
-              <p>Some representative placeholder content for the first slide of the carousel.</p>
-              <p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
-
-          <div class="container">
-            <div class="carousel-caption">
-              <h1>Another example headline.</h1>
-              <p>Some representative placeholder content for the second slide of the carousel.</p>
-              <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
-
-          <div class="container">
-            <div class="carousel-caption text-end">
-              <h1>One more for good measure.</h1>
-              <p>Some representative placeholder content for the third slide of this carousel.</p>
-              <p><a class="btn btn-lg btn-primary" href="#">Browse gallery</a></p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div>
-    {% endif %}
-        
     <body>
-        <main>
-            <div class="container marketing {% if block('carousel') is not defined%}mt-5{%endif%}">
-                {% block body %}{% endblock %}
-            </div><!-- /.container -->
-        </main>
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
+        {% block body %}
+            <header class="fixed-top"  role="banner">
+                <!-- MAIN NAVIGATION -->
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Main navigation">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" href="#">
+                            The french shop
+                        </a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="{{ path('app_products') }}">Nos produits</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Contact</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="">Qui sommes nous?</a>
+                                </li>
+                                {% if app.user %}
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ path('app_account') }}">Mon compte</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>
+                                    </li>
+                                {% else %}
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ path('app_register') }}">Inscription</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ path('app_login') }}">Connexion</a>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                        <form class="d-flex" role="search">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        </form>
+                   </div>
+                </nav>
+                <!-- SECONDARY NAVIGATION -->
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Secondary navigation">
+                    <div class="container-fluid">
+                        <div class="collapse navbar-collapse" id="secondaryNavbar">
+                            <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                                <div class="btn-group dropdown"role="group">
+                                    <button class="btn btn-secondary dropdown-toggle bg-dark me-3" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Femme
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><button class="dropdown-item" type="button">Voir tout</button></li>
+                                        <li><button class="dropdown-item" type="button">Vétements</button></li>
+                                        <li><button class="dropdown-item" type="button">Chaussures</button></li>
+                                        <li><button class="dropdown-item" type="button">Sacs</button></li>
+                                        <li><button class="dropdown-item" type="button">Accessoires</button></li>
+                                        <li><button class="dropdown-item" type="button">Beauté</button></li>
+                                    </ul>
+                                </div> 
+                                <div class="btn-group dropdown" role="group">
+                                    <button class="btn btn-secondary dropdown-toggle dropdown-toggle-split bg-dark me-3" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Homme
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><button class="dropdown-item" type="button">Voir tout</button></li>
+                                        <li><button class="dropdown-item" type="button">Vétements</button></li>
+                                        <li><button class="dropdown-item" type="button">Chaussures</button></li>
+                                        <li><button class="dropdown-item" type="button">Accessoires</button></li>
+                                        <li><button class="dropdown-item" type="button">Soins</button></li>
+                                    </ul>
+                                </div> 
+                                <div class="btn-group dropdown" role="group">
+                                    <button class="btn btn-secondary dropdown-toggle bg-dark me-3" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Enfants
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><button class="dropdown-item" type="button">Voir tout</button></li>
+                                        <li><button class="dropdown-item" type="button">Chaussures</button></li>
+                                        <li><button class="dropdown-item" type="button">Vétements</button></li>
+                                        <li><button class="dropdown-item" type="button">Accessoires</button></li>
+                                        <li><button class="dropdown-item" type="button">Jouets</button></li>
+                                    </ul>
+                                </div> 
+                                <div class="btn-group dropdown" role="group">
+                                    <button class="btn btn-secondary dropdown-toggle bg-dark me-3" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Maison
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><button class="dropdown-item" type="button">Voir tout</button></li>
+                                        <li><button class="dropdown-item" type="button">Textile</button></li>
+                                        <li><button class="dropdown-item" type="button">Décorations</button></li>
+                                        <li><button class="dropdown-item" type="button">Art de la table</button></li>
+                                    </ul>
+                                </div> 
+                                <div class="btn-group dropdown" role="group">
+                                    <button class="btn btn-secondary dropdown-toggle bg-dark me-3" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Animaux
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><button class="dropdown-item" type="button">Voir tout</button></li>
+                                        <li><button class="dropdown-item" type="button">Chiens</button></li>
+                                        <li><button class="dropdown-item" type="button">Chats</button></li>
+                                        <li><button class="dropdown-item" type="button">Autres animaux</button></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+
+            <!-- MAIN -->
+            <main>
+                <div class="container-fluid">
+                    {% if block('carousel') is defined %}
+                        <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-indicators">
+                                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                            </div>
+
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
+                                    <div class="container">
+                                        <div class="carousel-caption text-start">
+                                            <h1>Example headline.</h1>
+                                            <p>Some representative placeholder content for the first slide of the carousel.</p>
+                                            <p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
+                                    <div class="container">
+                                        <div class="carousel-caption">
+                                            <h1>Another example headline.</h1>
+                                            <p>Some representative placeholder content for the second slide of the carousel.</p>
+                                            <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
+                                    <div class="container">
+                                        <div class="carousel-caption text-end">
+                                            <h1>One more for good measure.</h1>
+                                            <p>Some representative placeholder content for the third slide of this carousel.</p>
+                                            <p><a class="btn btn-lg btn-primary" href="#">Browse gallery</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>      
+                            <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                    {% endif %}
+                    {% block main %}
+                        {% if block('carousel') is not defined %}
+                            mt-5
+                        {%endif%}">
+                    {% endblock %}
+                </div><!-- /.container -->
+            </main>
+
+            <!-- FOOTER -->
+            <footer class="container" role="contentinfo">
+                <p class="float-end"><a href="#">Back to top</a></p>
+                <p>&copy; 2017–2022 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+            </footer>
+
+            {% block javascripts %}
+                {{ encore_entry_script_tags('app') }}
+            {% endblock %}
         {% endblock %}
     </body>
-    
-    <!-- FOOTER -->
-    <footer class="container">
-      <p class="float-end"><a href="#">Back to top</a></p>
-      <p>&copy; 2017–2022 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-    </footer>
 </html>
