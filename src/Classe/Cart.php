@@ -15,15 +15,14 @@ Use Symfony\Component\HttpFoundation\RequestStack;
 class Cart 
 {
     public function __construct(private RequestStack $requestStack) {
-        $this->session = $requestStack->getSession();
     }
 
     
     public function add($id)
     {
-        //$session = $this->requestStack->getSession();
+        $session = $this->requestStack->getSession();
         
-        $cart = $this->session->get('cart', []);
+        $cart = $session->get('cart', []);
         
         if(!empty($cart[$id])){
             $cart[$id]++;
@@ -32,19 +31,27 @@ class Cart
         }
         
         // stores an attribute for reuse during a later user request
-        $this->session->set('cart', $cart);
+        $session->set('cart', $cart);
     }
     
     public function get()
     {
-        //$session = $this->requestStack->getSession();
+        $session = $this->requestStack->getSession();
         // gets an attribute by name
-        return $this->session->get('cart');
+        return $session->get('cart');
     }
     
     public function remove()
     {
-        //$session = $this->requestStack->getSession();
-        return $this->session->remove('cart');
+        $session = $this->requestStack->getSession();
+        return $session->remove('cart');
+    }
+       
+    public function delete($id)
+    {
+        $session = $this->requestStack->getSession();
+        $cart = $session->get('cart', []);
+        unset($cart[$id]);
+        return $session->set('cart', $cart);;
     }
 }

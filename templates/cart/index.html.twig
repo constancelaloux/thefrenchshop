@@ -2,19 +2,81 @@
 
 {% block title %}Hello CartController!{% endblock %}
 
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+{% block main %}
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/Applications/MAMP/htdocs/thefrenchshop/src/Controller/CartController.php'|file_link(0) }}">src/Controller/CartController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/Applications/MAMP/htdocs/thefrenchshop/templates/cart/index.html.twig'|file_link(0) }}">templates/cart/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <h1>Mon panier</h1>
+    <p>Retrouvez l'ensemble des produits que vous avez ajouté à votre panier.</p>
+    {% if cart|length > 0 %}
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-9">
+                    <h2>Commande</h2>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Produit</th>
+                                <th scope="col">Nom</th>
+                                <th scope="col">Quantité</th>
+                                <th scope="col">Prix</th>
+                                <th scope="col">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% set total = null %}
+                            {% set price= null %}
+                            {% for product in cart %}
+                                <tr>
+                                    <th scope="row">
+                                        <img src="/images/{{ product.product.illustration }}" alt= "{{ product.product.name }}" height="100px"></br></th>
+                                    <td>{{ product.product.name }}</td>
+                                    <td>
+                                        <a href="{{ path('delete_my_cart', {'id':product.product.id}) }}">
+                                            <img src="{{ asset('/images/minus.png') }}" height="10px" alt="Retirer un produit">
+                                        </a>
+                                        x{{ product.quantity }}
+                                        <a href="{{ path('add_to_cart', {'id':product.product.id}) }}">
+                                            <img src="{{ asset('/images/plus.png') }}" height="10px" alt="Ajouter un produit">
+                                        </a>
+                                    </td>
+                                    <td>{{ (product.product.price/100)|number_format(2,',','.') }} €</td>
+                                    <td>{{ ((product.product.price * product.quantity)/100)|number_format(2,',','.') }} €</td>
+                                    <td>
+                                        <a href="{{ path('delete_my_cart', {'id':product.product.id}) }}">
+                                        <img src="{{ asset('/images/delete.png') }}" height="18px" alt="Supprimer mon produit">
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% set total = total + (product.product.price * product.quantity) %}
+                            {% set price = price + (product.product.price) %}
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    <h2>Adresse</h2>
+                    <p>Ajoute ton adresse</p>
+                    <h2>Options de livraison</h2>
+                    <p>Envoi au point relais</p>
+                    <p>Envoi à domicile</p>
+                    <h2>Détails de la livraison</h2>
+                    <p>Choisir un point relais</p>
+                </div>
+                <div class="col-lg-3">
+                    <h2>Résumé de la commande</h2>
+                    <p>Nombre de produits</p>
+                    {{ cart|length }}<br/>
+                    <p>Commande</p>
+                    {{ (price/100)|number_format(2,',','.') }} €
+                    <p>Frais de port</p>
+                    <p>Total</p>
+                    {{ (total/100)|number_format(2,',','.') }} € </br>
+                    <a href="" class="btn btn-primary">Paiement</a>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="container-fluid">
+            <div class="row">
+                <p>Votre panier est vide</p>
+            </div>
+        </div>
+    {% endif %}
 {% endblock %}
