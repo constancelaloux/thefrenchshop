@@ -12,7 +12,7 @@ use Doctrine\ORM\EntityManagerInterface;
 
 class AccountPasswordController extends AbstractController
 {
-    private $entityManager;
+    private object $entityManager;
     
     public function __construct(EntityManagerInterface $entityManager) {
         $this->entityManager = $entityManager;

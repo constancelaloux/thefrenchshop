@@ -13,8 +13,6 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use App\Entity\Category;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-;
 /**
  * Description of SearchType
  *
@@ -57,7 +55,8 @@ class SearchType extends AbstractType
         ]);
     }
     
-    public function getBlockPrefix() {
+    public function getBlockPrefix(): string
+    {
         return "";
     }
 }

@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class ProductController extends AbstractController
 {
-    private $entityManager;
+    private object $entityManager;
     
     public function __construct(EntityManagerInterface $entityManager)
     {
@@ -51,7 +51,7 @@ class ProductController extends AbstractController
     
     
     #[Route('/product/{slug}', name: 'product')]
-    public function show($slug): Response
+    public function show(string $slug): Response
     {
         $product = $this->entityManager->getRepository(Product::class)->findOneBySlug($slug);
 

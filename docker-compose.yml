@@ -1,20 +1,35 @@
 version: '3'
 
 services:
+  db:
+        ports: [8889]
+        restart: always
+        labels:
+            com.symfony.server.service-prefix: true
 ###> doctrine/doctrine-bundle ###
   database:
-    image: postgres:${POSTGRES_VERSION:-15}-alpine
+    image: mysql:latest
+    restart: always
     environment:
-      POSTGRES_DB: ${POSTGRES_DB:-app}
       # You should definitely change the password in production
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-!ChangeMe!}
-      POSTGRES_USER: ${POSTGRES_USER:-app}
+      PMA_HOST: root
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: thefrenchshop
+    ports:
+            - '8889:8889'
     volumes:
-      - database_data:/var/lib/postgresql/data:rw
+      - "../log:/var/log/mysql/"
+      - "./data:/var/lib/mysql"
       # You may use a bind-mounted host directory instead, so that it is harder to accidentally remove the volume and lose all your data!
       # - ./docker/db/data:/var/lib/postgresql/data:rw
 ###< doctrine/doctrine-bundle ###
-
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    ports:
+      - 8080:80
+    environment:
+      - PMA_ARBITRARY=1
 volumes:
 ###> doctrine/doctrine-bundle ###
   database_data:

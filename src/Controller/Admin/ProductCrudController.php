@@ -13,7 +13,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
 
 class ProductCrudController extends AbstractCrudController
 {
-     public const PRODUCT_BASE_PATH = 'images/';
+    public const PRODUCT_BASE_PATH = 'images/';
     public const PRODUCT_UPLOAD_DIR = 'public/images/';
     public const UPLOADED_FILE_NAME_PATTERN = '[randomhash].[extension]';
     
